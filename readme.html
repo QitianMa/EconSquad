@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Notation</title>
+        <style>
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #abb2bf;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f0f0;
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 1.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 0.875em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr {
+  /* background-color: #fff; */
+  /* border-top: 1px solid #c6cbd1; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr:nth-child(2n) {
+  /* background-color: #f6f8fa; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: #abb2bf;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-light">
+        <hr>
+<h2 id="title-hyperparameter-setting-initial-conditions--iterationsauthor-qian-dong-wentian-tian-qitian-ma-gabriele-carta-date-16082020">Title: Hyperparameter Setting, Initial Conditions &amp; Iterations<br>
+Author: Qian Dong, Wentian Tian, Qitian Ma, Gabriele Carta. <br>
+Date: 16/08/2020</h2>
+<h2 id="notation">Notation</h2>
+<p>j = 1 year 20-49<br>
+j = 2 year 50-64<br>
+j = 3 year  65+</p>
+<h2 id="hyperparameter-feb-24th-2020---may-3rd-2020">Hyperparameter (Feb. 24th 2020 - May 3rd 2020)</h2>
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_j(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span>  lockdown policy<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>j</mi></msub><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.15999999999999992em" columnalign="center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0.6</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>j</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>j</mi><mo>=</mo><mn>3</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">L_j = \left\{
+ \begin{array}{cc}
+     0.6 &amp; j = 1, 2 \\
+     1   &amp; j = 3
+ \end{array}
+\right.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">{</span></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mord">.</span><span class="mord">6</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></li>
+</ol>
+<p><em>NOTE: Based on the policy adopted by the Italian government during the lockdown period, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L_j(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span> is supposed to be 0.6 for the young and middle group while for the old group, it's set to be 1.  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span> is taken as set in Acemoglu's paper for now.</em></p>
+<ol start="2">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><msub><mi>ρ</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><msub><mo stretchy="false">}</mo><mrow><mn>3</mn><mo>∗</mo><mn>3</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\{\rho_{i, j}\}_{3*3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">}</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mbin mtight">∗</span><span class="mord mtight">3</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> symmetric matrix   <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\rho_{i, j} ∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8252079999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> contact rate between group i and j<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><mo stretchy="false">{</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">}</mo></mrow></msub><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mi mathvariant="normal">∀</mi><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\rho_{\{i, j\}}=1,  \forall i,j=1,2,3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7857599999999999em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">{</span><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mclose mtight">}</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∀</span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span></span></span></span></li>
+</ol>
+<p><em>NOTE: The <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><mo stretchy="false">{</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">}</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\rho_{\{i, j\}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7857599999999999em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">{</span><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mclose mtight">}</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span></span></span></span> here are also taken from the baseline model set in Acemoglu's paper, which are the same for any inter-group interactions.</em></p>
+<ol start="3">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\alpha ∈[1,2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mclose">]</span></span></span></span> index of scale in matching</li>
+</ol>
+<p><em>NOTE: We may compare the results of these two different matching case and then see which one fits better the data. It's very likely that the reality is between 1 and 2.</em></p>
+<ol start="4">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span> infection rate<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>0.134</mn></mrow><annotation encoding="application/x-tex">\beta=0.134</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">3</span><span class="mord">4</span></span></span></span></li>
+</ol>
+<p><em>NOTE: It's set in the baseline model of Acemoglu's paper.</em></p>
+<ol start="5">
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span> lockdown efficiency<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0.75</mn></mrow><annotation encoding="application/x-tex">\theta = 0.75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">7</span><span class="mord">5</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ι</mi><mi>j</mi></msub><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\iota_{j} ∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8252079999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">ι</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> fraction of infected people who need ICU<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ι</mi><mi>j</mi></msub><mo>=</mo><mi>σ</mi><msubsup><mover accent="true"><mi>δ</mi><mo>ˉ</mo></mover><mi>j</mi><mi>d</mi></msubsup></mrow><annotation encoding="application/x-tex">\iota_{j}=\sigma \bar{\delta}_{j}^{d}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">ι</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2438799999999999em;vertical-align:-0.394772em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312199999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span></span></span><span style="top:-3.26344em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>κ</mi><mi>j</mi></msub><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\kappa_j∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8252079999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">κ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> fraction of recovered agents allowed to work freely<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>κ</mi><mi>j</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\kappa_{j}=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">κ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mi>j</mi></msub><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\gamma_j∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8252079999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> Non-ICU patients recover rate<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mi>j</mi></msub><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>18</mn></mrow><annotation encoding="application/x-tex">\gamma_j = 1/ 18</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">/</span><span class="mord">1</span><span class="mord">8</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>0.0076</mn></mrow><annotation encoding="application/x-tex">\sigma=0.0076</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">7</span><span class="mord">6</span></span></span></span> Coefficient of H(t) equation</p>
+</li>
+</ol>
+<p><em>NOTE: It's taken from the Acemoglu's paper.</em></p>
+<ol start="10">
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>j</mi></msub><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\phi_j∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>  (conditional) probability that an individual of type j needing ICU care is detected and isolated<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>j</mi></msub><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">\phi_{j} = 0.1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>j</mi></msub><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\tau_j∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8252079999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> the constant probability that an infected individual of type j not needing ICU care becomes isolated<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>j</mi></msub><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">\tau_{j} = 0.1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover accent="true"><mi>δ</mi><mo>ˉ</mo></mover><mi>j</mi><mi>d</mi></msubsup></mrow><annotation encoding="application/x-tex">\bar{\delta}_{j}^{d}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2438799999999999em;vertical-align:-0.394772em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312199999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span></span></span><span style="top:-3.26344em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span></span></span></span> The case fatality rates for the three age groups conditional on infection and ICU services being available.</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>j</th>
+<th><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover accent="true"><mi>δ</mi><mo>ˉ</mo></mover><mi>j</mi><mi>d</mi></msubsup></mrow><annotation encoding="application/x-tex">\bar{\delta}_{j}^{d}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2438799999999999em;vertical-align:-0.394772em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312199999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span></span></span><span style="top:-3.26344em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span></span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.06</td>
+</tr>
+</tbody>
+</table>
+<p><em>NOTE: The values are taken from Ferguson et al. (2020) and summarized by Acemoglu.</em></p>
+<h2 id="determined-parameter">Determined Parameter</h2>
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>σ</mi><msub><mo>∑</mo><mi>k</mi></msub><msubsup><mover accent="true"><mi>δ</mi><mo>ˉ</mo></mover><mi>k</mi><mi>d</mi></msubsup><msub><mi>I</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H(t)= \sigma \sum_{k} \bar{\delta}_{k}^{d} I_{k}(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.148818em;vertical-align:-0.29971000000000003em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1863979999999999em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312199999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span></span></span><span style="top:-3.26344em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.4168920000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2831079999999999em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><munder accentunder="true"><mi>δ</mi><mo stretchy="true">‾</mo></munder><mi>j</mi><mi>d</mi></msubsup><mo>=</mo><mo stretchy="false">(</mo><mover accent="true"><msubsup><mi>δ</mi><mi>j</mi><mi>d</mi></msubsup><mo>ˉ</mo></mover><mi>γ</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><msub><mi>ι</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\underline{\delta}_{j}^{d}=(\bar{\delta_{j}^{d}} \gamma) / \iota_{j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3192559999999998em;vertical-align:-0.38580800000000004em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-2.84em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.20000000000000007em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9334479999999998em;"><span style="top:-2.4503000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.38580800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3806599999999998em;vertical-align:-0.4129719999999999em;"></span><span class="mopen">(</span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9676879999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.830908em;"><span style="top:-2.4231360000000004em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-3.0448000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4129719999999999em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.399908em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4129719999999999em;"><span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="mclose">)</span><span class="mord">/</span><span class="mord"><span class="mord mathdefault">ι</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>δ</mi><mi>j</mi><mi>d</mi></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><munder accentunder="true"><mi>δ</mi><mo stretchy="true">‾</mo></munder><mi>j</mi><mi>d</mi></msubsup><mo>⋅</mo><mo stretchy="false">[</mo><mn>1</mn><mo>+</mo><mi>λ</mi><mi>H</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\delta_{j}^{d}(t)=\underline{\delta}_{j}^{d} \cdot[1+\lambda H(t)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2438799999999999em;vertical-align:-0.394772em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3192559999999998em;vertical-align:-0.38580800000000004em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-2.84em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.20000000000000007em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9334479999999998em;"><span style="top:-2.4503000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.38580800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">λ</span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">]</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>δ</mi><mi>j</mi><mi>r</mi></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>γ</mi><mi>j</mi></msub><mo>−</mo><msubsup><mi>δ</mi><mi>j</mi><mi>d</mi></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\delta_j^r(t) = \gamma_j - \delta_j^d(t) ∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1447720000000001em;vertical-align:-0.394772em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-2.441336em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8694379999999999em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.2438799999999999em;vertical-align:-0.394772em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>  ICU patients recover rate</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>η</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\eta_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mo stretchy="false">[</mo><msub><mi>ι</mi><mi>j</mi></msub><msub><mi>ϕ</mi><mi>j</mi></msub><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>ι</mi><mi>j</mi></msub><mo stretchy="false">)</mo><msub><mi>τ</mi><mi>j</mi></msub><mo stretchy="false">]</mo><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">1 - [\iota_j\phi_j + (1-\iota_j)\tau_j] ∈[0,1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">ι</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">ι</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>  rate of infected person fail to be isolated</li>
+</ol>
+<h2 id="initial-condition">Initial Condition</h2>
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>O</mi><msub><mi>P</mi><mrow><mi>L</mi><mi>o</mi><mi>m</mi></mrow></msub><mo>=</mo><mn>8269281</mn></mrow><annotation encoding="application/x-tex">POP_{Lom}=8269281</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span><span class="mord">2</span><span class="mord">6</span><span class="mord">9</span><span class="mord">2</span><span class="mord">8</span><span class="mord">1</span></span></span></span></li>
+</ol>
+<p><em>NOTE: Here we only consider the population of and above 20 years old considering the age groups we are focusing on.</em></p>
+<ol start="2">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>O</mi><msub><mi>P</mi><mrow><mi>V</mi><mi>e</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>4033961</mn></mrow><annotation encoding="application/x-tex">POP_{Ven}=4033961</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">3</span><span class="mord">3</span><span class="mord">9</span><span class="mord">6</span><span class="mord">1</span></span></span></span></li>
+</ol>
+<p><em>NOTE: Here we only consider the population of and above 20 years old considering the age groups we are focusing on.</em></p>
+<ol start="3">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>I</mi><mi>n</mi><mi>f</mi><mi>I</mi><mi>n</mi><mi>i</mi><msub><mi>t</mi><mrow><mi>L</mi><mi>o</mi><mi>m</mi></mrow></msub><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">NInfInit_{Lom} = 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span></li>
+</ol>
+<p><em>NOTE: Initial infected population in Lombardia, which is the same as assumed in Favero's paper.}</em></p>
+<ol start="4">
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>I</mi><mi>n</mi><mi>f</mi><mi>I</mi><mi>n</mi><mi>i</mi><msub><mi>t</mi><mrow><mi>V</mi><mi>e</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">NInfInit_{Ven} = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">V</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span></li>
+</ol>
+<p><em>NOTE: Initial infected population in Veneto, which is the same as assumed in Favero's paper.</em></p>
+<ol start="5">
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mi>N</mi><mi>I</mi><mi>n</mi><mi>f</mi><mi>I</mi><mi>n</mi><mi>i</mi><msub><mi>t</mi><mrow><mi>L</mi><mi>o</mi><mi>m</mi></mrow></msub><mo>∗</mo><msub><mi>N</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">I_{j}(0) = NInfInit_{Lom} * N_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><msub><mi>N</mi><mi>j</mi></msub><mo>∗</mo><mi>P</mi><mi>o</mi><msub><mi>p</mi><mrow><mi>L</mi><mi>o</mi><mi>m</mi></mrow></msub><mo>−</mo><msub><mi>I</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S_{j}(0)=N_{j}*Pop_{Lom}-I_{j}(0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></p>
+</li>
+</ol>
+<h2 id="iteration">Iteration</h2>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>S</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Delta{S_j}(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi mathvariant="normal">Δ</mi><msub><mi>I</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-\Delta{I_j}(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord">−</span><span class="mord">Δ</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>I</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>β</mi><mo stretchy="false">[</mo><mn>1</mn><mo>−</mo><msub><mi>θ</mi><mi>j</mi></msub><msub><mi>L</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo><msub><mi>S</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msub><mo>∑</mo><mi>k</mi></msub><mrow><msub><mi>ρ</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><msub><mi>η</mi><mi>k</mi></msub><msub><mi>I</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>θ</mi><mi>k</mi></msub><msub><mi>L</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><mi mathvariant="normal">/</mi><mo stretchy="false">{</mo><msub><mo>∑</mo><mi>k</mi></msub><msub><mi>ρ</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mo stretchy="false">[</mo><mo stretchy="false">(</mo><msub><mi>S</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>η</mi><mi>k</mi></msub><msub><mi>I</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>κ</mi><mi>k</mi></msub><mo stretchy="false">)</mo><msub><mi>R</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo>−</mo><msub><mi>θ</mi><mi>k</mi></msub><msub><mi>L</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mo>+</mo><msub><mi>κ</mi><mi>k</mi></msub><msub><mi>R</mi><mi>k</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">}</mo><mrow><mn>2</mn><mo>−</mo><mi>α</mi></mrow></msup><mo>−</mo><msub><mi>γ</mi><mi>j</mi></msub><msub><mi>I</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\Delta{I_j}(t) = \beta [1-\theta_jL_j(t)]S_j(t) \sum_{k}{\rho_{jk}\eta_kI_k(t)(1-\theta_kL_k(t))} / 
+\{\sum_k\rho_{jk}[(S_k(t)+\eta_kI_k(t)+(1-\kappa_k)R_k(t)][1-\theta_kL_k(t)]+\kappa_k R_k(t)\}^{2-\alpha} - \gamma_jI_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mopen">[</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.0497100000000001em;vertical-align:-0.29971000000000003em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">]</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1863979999999999em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">)</span></span><span class="mord">/</span><span class="mopen">{</span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1863979999999999em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">κ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">κ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose"><span class="mclose">}</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight" style="margin-right:0.0037em;">α</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>D</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mi>δ</mi><mi>j</mi><mi>d</mi></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msub><mi>H</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Delta D_j(t) = \delta_j^d(t)H_j(t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2438799999999999em;vertical-align:-0.394772em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-2.441336em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span></span></span></span><br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>R</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mi>δ</mi><mi>j</mi><mi>r</mi></msubsup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><msub><mi>H</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>γ</mi><mi>j</mi></msub><mo stretchy="false">(</mo><msub><mi>I</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><msub><mi>H</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Delta R_j(t) = \delta_j^r(t)H_j(t) + \gamma_j(I_j(t)-H_j(t))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1447720000000001em;vertical-align:-0.394772em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-2.441336em;margin-left:-0.03785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.394772em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.05556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></p>
+
+    </body>
+    </html>
