@@ -1,3 +1,7 @@
+# Author: Qitian Ma
+# Date: 10/08/2020
+
+
 # Hyperparamter
 start_date <- as.Date.character("2020/02/24", format="%Y/%m/%d")
 end_date <- as.Date.character("2020/05/03", format="%Y/%m/%d")
